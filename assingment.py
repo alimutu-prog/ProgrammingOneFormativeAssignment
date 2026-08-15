@@ -10,11 +10,11 @@ class Assignment:
 # Stores the subject.
 # lower() converts it to lowercase and strip() removes extra spaces.
 
-        self.subject=subject.lower().strip()
+        self.subject=subject.strip().lower()
 
 # Store the assignment title.
 
-        self.title=title
+        self.title=title.strip()
 
 # Convert the score to a floating-point number.
 
@@ -26,12 +26,13 @@ class Assignment:
 
 # Store the due date.
 
-        self.due_date=due_date
+        self.due_date=due_date.strip()
+
 
 # Store the assignment type.
 # This will be either 'homework' or 'exam'.
 
-        self.atype=atype # 'homework or 'exam' #
+        self.atype=atype.lower() # 'homework or 'exam' #
 
 # __str__() controls how an Assignment object
 # is displayed when we use print().
@@ -40,12 +41,9 @@ class Assignment:
 
 # Return the assignment information as a string.
 
-        return(
-            f"{self.subject}"
-            f"{self.title}"
-            f"{self.score}"
-            f"{self.max_score}"
-            f"{self.max_score}"
-            f"{self.due_date}"
-            f"{self.atype}"
-        )
+
+     return (
+        f"{self.subject.title()} | {self.title} | "
+        f"{self.score}/{self.max_score} | "
+        f"Due: {self.due_date} | {self.atype.title()}"
+    )

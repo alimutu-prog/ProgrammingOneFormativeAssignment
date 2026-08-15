@@ -4,32 +4,25 @@ from gradetracker import GradeTracker
 from assingment import Assignment
 
 
-pot=GradeTracker()
+def add_assingment(pot, atype):
+    subject = input("Enter subject: ")
+    title = input("Enter title: ")
 
-while True:
-
-    print("\n~~~~~~STUDENT PERFORMANCE TRACKER~~~~")
-    print("1.Add homework")
-    print("2. exam")
-    print("3. List tests")
-    print("4. Filter tests")
-    print("5. Show grade summary")
-    print("0. Exit")
-
-    choice=input("Enter yur choice:").strip()
-
-    if choice == "1":
-
-        subject = input("Enter subject name: ")
-        title = input("Enter assingment title: ")
-
+    try:
         score = float(input("Enter score: "))
         max_score = float(input("Enter maximum score: "))
 
-        due_date = input(
-            "Enter due_date: "
-        )
+        if max_score <= 0 or score < 0 or score > max_score:
+            print("Invalid score")
+            return
 
+    except ValueError:
+        print("Please enter numbers only.")
+        return
+
+    due_date = input("Enter due date: ")
+
+    if atype == "homework":
         test = Homework(
             subject,
             title,
@@ -37,65 +30,75 @@ while True:
             max_score,
             due_date
         )
-
-        pot.add_assingment(test)
-
-        print("Homework assingment added successfully.")
-
-    elif choice == "2":
-
-         subject = input("Enter subject name: ")
-         title = input("Enter assingment title: ")
-       
-         score = float(input("Enter score: "))
-         max_score = float(input("Enter maximum score: "))
-       
-         due_date = input("Enter due_date: ")
-       
-         test = Exam(
-                   subject,
-                   title,
-                   score,
-                   max_score,
-                   due_date
-               )
-       
-         pot.add_assingment(test)
-       
-         print("Exam assingment added successfully.")
-
-    elif choice == "3":
-
-        pot.list_assingments()
-
-    elif choice == "4":
-
-        department = input(
-            "Enter assingment type: "
-        ).strip()
-
-        filtered = pot.filter_assingments(
-            type
+    else:
+        test = Exam(
+            subject,
+            title,
+            score,
+            max_score,
+            due_date
         )
 
-        if not filtered:
-            print("No assingment of that type  found.")
+    pot.add_assingment(test)
+    print("Assignment added successfully.")
 
-        else:
-            for test in filtered:
-                print(test)
 
-    elif choice == "5":
+def filter_assignments(pot):
+    print("\n1. By type (homework/exam)")
+    print("2. By subject")
+    print("3. By month (YYYY-MM)")
 
-        pot.show_grade_summary()
+    filter_choice = input("Choose your preferred option: ").strip()
 
-    elif choice == "0":
-
-        print("Goodbye!")
-        break
-
+    if filter_choice == "1":
+        atype = input("Enter type (homework/exam): ").lower()
+        filtered = pot.filter_by_type(atype)
+    elif filter_choice == "2":
+        subject = input("Enter subject: ")
+        filtered = pot.filter_by_subject(subject)
+    elif filter_choice == "3":
+        month = input("Enter month (YYYY-MM): ")
+        filtered = pot.filter_by_month(month)
     else:
+        print("Invalid choice")
+        filtered = []
 
-        print("Invalid choice.")
+    if filtered:
+        for final in filtered:
+            print(final)
+    else:
+        print("No assignments found.")
 
 
+def main():
+    pot = GradeTracker()
+
+    while True:
+        print("\n1. Add homework")
+        print("2. Add exam")
+        print("3. List assignments")
+        print("4. Filter assignments")
+        print("5. Show summary")
+        print("0. Exit")
+
+        choice = input("Enter your choice: ").strip()
+
+        if choice == "1":
+            add_assingment(pot, "homework")
+        elif choice == "2":
+            add_assingment(pot, "exam")
+        elif choice == "3":
+            pot.list_assingments()
+        elif choice == "4":
+            filter_assignments(pot)
+        elif choice == "5":
+            pot.show_grade_summary()
+        elif choice == "0":
+            print("Goodbye")
+            break
+        else:
+            print("Invalid choice")
+
+
+if __name__ == "__main__":
+    main()
