@@ -24,7 +24,7 @@ class GradeTracker:
 # Method used to filter assignments by their type.
 # The type can be 'homework' or 'exam'.
 
-        def filter_assingments(self,atype):
+    def filter_assingments(self,atype):
 
 # Created a new list containing only assignments
 # whose type matches the type entered by the user.
@@ -35,3 +35,49 @@ class GradeTracker:
 
  # Returning the filtered list.
             return filtered
+
+    
+def show_grade_summary(self):
+
+    if not self.tests:
+        print("\n[!] No tests found. Add entry first")
+        return
+
+    def get_percentage(e):
+        return (e.score / e.max_score) * 100
+
+    total_percentage = sum(
+        get_percentage(e)
+        for e in self.tests
+    )
+
+    average = total_percentage / len(self.tests)
+
+    high=max(self.tests,key=get_percentage)
+
+    low=min(self.tests,key=get_percentage)
+
+
+
+    print("\n" + "=" * 40)
+    print("   GRADE SUMMARY")
+    print("=" *40)
+
+    print(
+        f"overall average grade:"
+        f"{average:.1f}%"
+
+    )
+
+    print(
+        f"Highest grade:"
+        f"{high.subject}"
+        f"({get_percentage(high):.1f}%)"
+    )
+
+
+    print(
+            f"Lowest grade:"
+            f"{low.subject}"
+            f"({get_percentage(low):.1f}%)"
+        )
