@@ -3,7 +3,7 @@ from assingment import Assignment
 
 #Created the Homework subclass.
 # Homework inherits all the attributes and methods from Assignment.
-class homework(Assignment):
+class Homework(Assignment):
 # Constructor for the Homework class.
 # It receives the information needed to create a homework assignment.
 

@@ -4,7 +4,7 @@ from assingment import Assignment
 
 # Created the Exam subclass.
 # Exam inherits all the attributes and methods from Assignment.
-class exam(Assignment):
+class Exam(Assignment):
 
 # Constructor for the Exam class.
 # It receives the information needed to create an exam assignment.

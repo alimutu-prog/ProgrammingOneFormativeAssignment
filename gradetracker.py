@@ -30,7 +30,7 @@ class GradeTracker:
 # whose type matches the type entered by the user.
             filtered=[
                 test for test in self.tests
-                if test.atype.lower()==atype.lower()
+                if test.type.lower()==type.lower()
             ]
 
  # Returning the filtered list.
