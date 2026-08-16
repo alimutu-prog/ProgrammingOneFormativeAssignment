@@ -63,11 +63,7 @@ def filter_assignments(pot):
         print("Invalid choice")
         filtered = []
 
-    if filtered:
-        for final in filtered:
-            print(final)
-    else:
-        print("No assignments found.")
+    pot.list_assingments(filtered)
 
 
 def main():

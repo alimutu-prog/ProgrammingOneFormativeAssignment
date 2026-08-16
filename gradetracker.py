@@ -5,12 +5,15 @@ class GradeTracker:
     def add_assingment(self, test):
         self.tests.append(test)
 
-    def list_assingments(self):
-        if not self.tests:
-            print("\n[!] No tests found.")
+    def list_assingments(self, tests=None):
+        items = tests if tests is not None else self.tests
+        if not items:
+            print("\nNo assignments to display.\n")
             return
-        for test in self.tests:
+        print("\n" + "-" * 90)
+        for test in items:
             print(test)
+        print("-" * 90 + f"\nTotal: {len(items)} assignment(s)\n")
 
     def filter_by_subject(self, subject):
         subject = subject.strip().lower()

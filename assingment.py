@@ -38,12 +38,9 @@ class Assignment:
 # is displayed when we use print().
 
     def __str__(self):
-
-# Return the assignment information as a string.
-
-
-     return (
-        f"{self.subject.title()} | {self.title} | "
-        f"{self.score}/{self.max_score} | "
-        f"Due: {self.due_date} | {self.atype.title()}"
-    )
+        return (
+            f"[{self.atype.title():<9}] {self.subject.title():<12} | "
+            f"{self.title:<20} | {self.score:>5.1f}/{self.max_score:<5.1f} "
+            f"({(self.score/self.max_score)*100:5.1f}%) | Due: {self.due_date}"
+        )
+    
