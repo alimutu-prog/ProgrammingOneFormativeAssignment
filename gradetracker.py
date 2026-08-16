@@ -27,7 +27,7 @@ class GradeTracker:
             return
 
         # Print a line to make the output easier to read.
-        print("\n" + "-" * 90)
+        print("\n" + "*" * 90)
 
         # Go through each assignment in the selected list.
         for test in items:
@@ -37,7 +37,7 @@ class GradeTracker:
 
         # Print another line after the assignments.
         # Also display the total number of assignments.
-        print("-" * 90 + f"\nTotal: {len(items)} assignment(s)\n")
+        print("*" * 90 + f"\nTotal: {len(items)} assignment(s)\n")
 
     # Method used to filter assignments by subject.
     def filter_by_subject(self, subject):
