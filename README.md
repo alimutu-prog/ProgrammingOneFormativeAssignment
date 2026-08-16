@@ -74,6 +74,8 @@ Lowest scoring assignment
 Closes the program.
 
 
+![Program Screenshot](./SCREENSHOTS/review_assignments.png)
+
 
 
 
